@@ -11,7 +11,7 @@ module.exports = {
     if(msg.member.permission.json.administrator == true || client.config.admins.includes(msg.author.id)) {
       if(args.length == 0) return msg.channel.createMessage(":x: Prefixin değiştirilmesi için bir prefix girmelisiniz. Güncel prefix: "+prefix);
       await client.db.set(`servers.${msg.guildID}`, {prefix: `${args[0]}`}) 
-      message.channel.createMessage(`Yeni Prefix: ${args[0]}`)
+      message.channel.createMessage(`:white_check_mark: Sunucu ön-eki **${args[0]}** olarak değiştirildi. `)
     } else {
       msg.channel.createMessage(`:x: Bu komutu kullanabilmek için gerekli yetkin yok. **[ADMINISTRATOR]**\n Bu Sunucudaki güncel prefix: ${prefix}`)
     }
