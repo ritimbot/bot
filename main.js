@@ -16,9 +16,9 @@ class Main extends Base {
       console.log(`${this.clusterID} joined!`);
       this.bot.commands = new this.eris.Collection();
       this.bot.editStatus("online", {name: config.status, type: 2});
-      this.config = config;
+      this.bot.config = config;
       this.bot.db = new Database(config.database);
-      this.admins = config.admins;
+      this.bot.admins = config.admins;
       for (const file of commandFiles) {
         const command = require(join(__dirname, "commands", `${file}`));
         this.bot.commands.set(command.name, command);
@@ -26,11 +26,16 @@ class Main extends Base {
       this.bot.db.on("ready", () => console.log("Database bağlandı."));
       
       this.bot.on("messageCreate", async msg => {
-        if(typeof msg.guildID == undefined) return;
+        if(msg.guildID == undefined) return;
         if(msg.author.bot) return;
-        
-        let prefix = await this.bot.db.get(`servers.${msg.guildID}.prefix`) || "--";
+        let prefix = await this.bot.db.get(`servers.${msg.guildID}.prefix`)|| "--";
         if(msg.content == `<@!${config.botid}>` || msg.content == `<@${config.botid}>`) return this.bot.createMessage(msg.channel.id, `**Sunucudaki Ön-Ek**: ${prefix}`);
+        
+        if(msg.content.startsWith(`<@!${config.botid}> `)){
+          let prefix = `<@!${config.botid}> `
+        }else if(msg.content.startsWith(`<@${config.botid}> `)){
+          let prefix = `<@${config.botid}> `
+        }
         
         if(msg.content.startsWith(prefix)){
           const args = msg.content.slice(prefix.length).trim().split(/ +/);
@@ -43,7 +48,7 @@ class Main extends Base {
             command.execute(this.bot, msg, args, this);
           } catch (error) {
             console.error(error);
-            this.bot.createMessage(msg.channel.id ,"Komut yürütülürken bilinmedik bir hata oluştu, lütfen yapımcı ile iletişime geçmeyi deneyin.").catch(console.error);
+            this.bot.createMessage(msg.channel.id ,":x: Komut yürütülürken bilinmedik bir hata oluştu, lütfen yapımcı ile iletişime geçmeyi deneyin.").catch(console.error);
           }
         }
       });
