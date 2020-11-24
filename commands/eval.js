@@ -1,7 +1,8 @@
 module.exports = {
   name: "eval",
   description: "Bot dışardan eval alır.",
-  usage: "--eval console.log()",
+  usage: "--eval kod",
+  example: "--eval console.log()",
   aliases: ["heval", "hewal", "run", "try"],
   
   async execute(client, msg, args, thos){
@@ -18,6 +19,9 @@ module.exports = {
     if(!client.config.admins.includes(msg.author.id)){
       msg.channel.createMessage(":x: Bu komutu kullanabilmek için gerekli yetkin yok. **[BOT_OWNER]**")
     }else{
+      if(args[0].startsWith("client.config")) {
+          return msg.channel.createMessage(":x: Ulu orta yerde böyle bir şey yapmana izin vermiyorum!")
+        }
       try {
       const code = args.join(" ");
       let evaled = eval(code);
