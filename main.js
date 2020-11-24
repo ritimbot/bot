@@ -23,13 +23,13 @@ class Main extends Base {
         const command = require(join(__dirname, "commands", `${file}`));
         this.bot.commands.set(command.name, command);
       }
-      this.db.on("ready", () => console.log("Database bağlandı."));
+      this.bot.db.on("ready", () => console.log("Database bağlandı."));
       
       this.bot.on("messageCreate", async msg => {
         if(typeof msg.guildID == undefined) return;
         if(msg.author.bot) return;
         
-        let prefix = await this.db.get(`servers.${msg.guildID}.prefix`) || "--";
+        let prefix = await this.bot.db.get(`servers.${msg.guildID}.prefix`) || "--";
         if(msg.content == `<@!${config.botid}>` || msg.content == `<@${config.botid}>`) return this.bot.createMessage(msg.channel.id, `**Sunucudaki Ön-Ek**: ${prefix}`);
         
         if(msg.content.startsWith(prefix)){
