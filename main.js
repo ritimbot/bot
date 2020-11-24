@@ -15,8 +15,6 @@ class Main extends Base {
       this.eris = require("eris");
       console.log(`${this.clusterID} joined!`);
       this.bot.commands = new this.eris.Collection();
-      
-      // Veriler
       this.bot.editStatus("online", {name: config.status, type: 2});
       this.config = config;
       this.db = new Database(config.database);
@@ -27,7 +25,6 @@ class Main extends Base {
       }
       this.db.on("ready", () => console.log("Database bağlandı."));
       
-      // Mesaj Eventi
       this.bot.on("messageCreate", async msg => {
         if(typeof msg.guildID == undefined) return;
         if(msg.author.bot) return;
