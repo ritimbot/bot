@@ -1,1 +1,1 @@
-# bot
+# Ritim Bot
