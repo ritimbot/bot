@@ -46,7 +46,7 @@ class Main extends Base {
             command.execute(this.bot, msg, args, commandName, prefix);
           } catch (error) {
             console.error(error);
-            this.bot.messageCreate(msg.channel.id ,"Komut yürütülürken bilinmedik bir hata oluştu, lütfen yapımcı ile iletişime geçmeyi deneyin.").catch(console.error);
+            this.bot.createMessage(msg.channel.id ,"Komut yürütülürken bilinmedik bir hata oluştu, lütfen yapımcı ile iletişime geçmeyi deneyin.").catch(console.error);
           }
         }
       });
