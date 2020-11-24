@@ -1,8 +1,8 @@
 const { readdirSync } = require("fs");
 const { join } = require("path");
 const { Base, Collection } = require('eris-sharder');
+
 const config = require("./config")
-// Database
 const { Database } = require("quickmongo"); 
 const commandFiles = readdirSync(join(__dirname, "commands")).filter((file) => file.endsWith(".js"));
 
