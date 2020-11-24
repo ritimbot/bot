@@ -17,7 +17,7 @@ class Main extends Base {
       this.bot.commands = new this.eris.Collection();
       this.bot.editStatus("online", {name: config.status, type: 2});
       this.config = config;
-      this.db = new Database(config.database);
+      this.bot.db = new Database(config.database);
       this.admins = config.admins;
       for (const file of commandFiles) {
         const command = require(join(__dirname, "commands", `${file}`));
