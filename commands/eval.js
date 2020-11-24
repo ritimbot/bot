@@ -20,7 +20,7 @@ module.exports = {
       msg.channel.createMessage(":x: Bu komutu kullanabilmek için gerekli yetkin yok. **[BOT_OWNER]**")
     }else{
       if(args[0].startsWith("client.config")) {
-          return msg.channel.createMessage(":x: Ulu orta yerde böyle bir şey yapmana izin vermiyorum!")
+          return msg.channel.createMessage(":x: Ulu orta yerde böyle bir şey yapmana izin yok.")
         }
       try {
       const code = args.join(" ");
