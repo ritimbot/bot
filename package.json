@@ -1,0 +1,25 @@
+  "name": "ritim-bot",
+  "version": "1.00",
+  "description": "eris & lavalink based turkish music bot.",
+  "main": "shard.js",
+  "scripts": {
+    "start": "node shard.js"
+  },
+  "dependencies": {
+    "eris": "^0.14.0",
+    "eris-sharder": "^1.10.0",
+    "quickmongo": "^2.0.6"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "url": "https://github.com/ritimbot/bot"
+  },
+  "license": "MPL",
+  "keywords": [
+    "music",
+    "lavalink",
+    "eris"
+  ]
+}
