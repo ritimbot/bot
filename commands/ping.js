@@ -2,6 +2,7 @@ module.exports = {
   name: "ping",
   description: "Bot gecikme değerini atar.",
   usage: "--ping",
+  example: "--ping",
   aliases: ["gecikme"],
   
   async execute(client, msg, args, thos){
