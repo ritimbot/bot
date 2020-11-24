@@ -3,7 +3,7 @@ module.exports = {
   description: "Bot'un prefixini değiştirir.",
   usage: "--prefix newprefix",
   example: "--prefix !",
-  aliases: ["setpreifx"],
+  aliases: ["setprefix", "onek", "önek", "ön-ek"],
   
   async execute(client, msg, args, thos){
     let message = msg;
